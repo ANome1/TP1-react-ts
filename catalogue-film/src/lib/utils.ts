@@ -83,11 +83,11 @@ export function filtrerParGenre(liste, genre) {
 // `statut` est une chaîne quelconque : rien n'empêche d'écrire "Vu",
 // "vue" ou "à voir". Une faute de frappe passe inaperçue.
 
-export function estVu(film) {
+export function estVu(film: film) {
   return film.statut === "vu";
 }
 
-export function libelleStatut(film) {
+export function libelleStatut(film: film) {
   if (film.statut === "vu") return "Déjà vu";
   if (film.statut === "a_voir") return "À voir";
   if (film.statut === "abandonne") return "Abandonné";
