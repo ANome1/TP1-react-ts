@@ -14,11 +14,12 @@
 // --- Données de démonstration ----------------------------------------
 
 type statut = "Vu"|"a_voir"|"abandonne"
+type genre ="SF"|"Horreur"|"Thriller"|"Drame"|"Aventure"
 interface film {
   id: number;
   titre: string;
   annee: number;
-  genres: string[];
+  genres: genre[];
   note: number;
   statut: statut
 }
