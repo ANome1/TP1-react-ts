@@ -24,11 +24,11 @@ export const FILMS = [
 // --- 1. Paramètres non typés -----------------------------------------
 // Le mode strict interdit les paramètres au type implicite.
 
-export function formaterTitre(titre, annee) {
+export function formaterTitre(titre: string, annee: number) {
   return `${titre} (${annee})`;
 }
 
-export function resume(film) {
+export function resume(film: film) {
   return `${film.titre} — ${film.annee} — ${film.note}/10 — ${film.genres.join(", ")}`;
 }
 
@@ -36,7 +36,7 @@ export function resume(film) {
 // Cette fonction renvoie tantôt un nombre, tantôt une chaîne.
 // Quel type déclarer ? Et surtout : que devra faire celui qui l'appelle ?
 
-export function moyenne(notes) {
+export function moyenne(notes: number[]){
   if (notes.length === 0) return "Aucune note";
   const total = notes.reduce((a, b) => a + b, 0);
   return total / notes.length;
@@ -46,7 +46,7 @@ export function moyenne(notes) {
 // find() renvoie undefined quand rien ne correspond.
 // La deuxième fonction l'ignore complètement.
 
-export function trouverParId(liste, id) {
+export function trouverParId(liste: { id: number }[], id: number) {
   return liste.find((film) => film.id === id);
 }
 
