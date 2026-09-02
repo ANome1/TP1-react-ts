@@ -12,7 +12,7 @@
 // =====================================================================
 
 // --- Données de démonstration ----------------------------------------
-interface FILMS {
+interface film {
   id: number;
   titre: string;
   annee: number;
@@ -36,7 +36,7 @@ export function formaterTitre(titre: string, annee: number) {
   return `${titre} (${annee})`;
 }
 
-export function resume(film: FILMS) {
+export function resume(film: film) {
   return `${film.titre} — ${film.annee} — ${film.note}/10 — ${film.genres.join(", ")}`;
 }
 
