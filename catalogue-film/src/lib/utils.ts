@@ -12,6 +12,14 @@
 // =====================================================================
 
 // --- Données de démonstration ----------------------------------------
+interface FILMS {
+  id: number;
+  titre: string;
+  annee: number;
+  genre: string[];
+  note: number;
+  statut: "Vu"|"a_voir"|"abandonne"
+}
 
 export const FILMS = [
   { id: 1, titre: "Alien", annee: 1979, genres: ["SF", "Horreur"], note: 8.5, statut: "vu" },
