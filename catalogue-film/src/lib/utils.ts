@@ -18,7 +18,7 @@ interface film {
   annee: number;
   genres: string[];
   note: number;
-  statut: "Vu"|"a_voir"|"abandonne"
+  statut: string
 }
 
 export const FILMS = [
