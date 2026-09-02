@@ -12,13 +12,15 @@
 // =====================================================================
 
 // --- Données de démonstration ----------------------------------------
+
+type statut = "Vu"|"a_voir"|"abandonne"
 interface film {
   id: number;
   titre: string;
   annee: number;
   genres: string[];
   note: number;
-  statut: string
+  statut: statut
 }
 
 export const FILMS = [
