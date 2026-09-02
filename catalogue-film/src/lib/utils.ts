@@ -56,7 +56,7 @@ export function moyenne(notes: number[]){
 // find() renvoie undefined quand rien ne correspond.
 // La deuxième fonction l'ignore complètement.
 
-export function trouverParId(liste: { id: number }[], id: number) {
+export function trouverParId(liste) {
   return liste.find((film) => film.id === id);
 }
 
