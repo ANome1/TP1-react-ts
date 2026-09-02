@@ -47,7 +47,7 @@ export function resume(film: film) {
 // Cette fonction renvoie tantôt un nombre, tantôt une chaîne.
 // Quel type déclarer ? Et surtout : que devra faire celui qui l'appelle ?
 
-export function moyenne(notes: number[]){
+export function moyenne(notes: number[]): number | string {
   if (notes.length === 0) return "Aucune note";
   const total = notes.reduce((a, b) => a + b, 0);
   return total / notes.length;
@@ -57,26 +57,26 @@ export function moyenne(notes: number[]){
 // find() renvoie undefined quand rien ne correspond.
 // La deuxième fonction l'ignore complètement.
 
-export function trouverParId(liste) {
+export function trouverParId(liste: film[], id: number): film | undefined {
   return liste.find((film) => film.id === id);
 }
 
-export function titreDuFilm(liste, id) {
-  return trouverParId(liste, id).titre;
+export function titreDuFilm(liste: film[], id: number): string | undefined {
+  return trouverParId(liste, id)?.titre;
 }
 
 // --- 4. Un tri générique ----------------------------------------------
 // On trie par une clé passée en paramètre. Rien ne garantit que cette
 // clé existe sur les objets de la liste.
 
-export function trierPar(liste, cle) {
+export function trierPar(liste: film[], cle: keyof(film)): film[] {
   return [...liste].sort((a, b) => (a[cle] > b[cle] ? 1 : -1));
 }
 
 // --- 5. Un paramètre optionnel jamais vérifié -------------------------
 // Appelée sans genre, cette fonction filtre sur `undefined`.
 
-export function filtrerParGenre(liste, genre) {
+export function filtrerParGenre(liste: film[], genre: genre[]): undefined | film[] {
   return liste.filter((film) => film.genres.includes(genre));
 }
 
