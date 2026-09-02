@@ -13,7 +13,8 @@
 
 // --- Données de démonstration ----------------------------------------
 
-type statut = "Vu"|"a_voir"|"abandonne"
+type statut = "vu"|"a_voir"|"abandonne"
+type statut2 = "Déjà vu"|"À voir"|"Abandonné"|"Statut inconnu"
 type genre ="SF"|"Horreur"|"Thriller"|"Drame"|"Aventure"
 interface film {
   id: number;
@@ -76,19 +77,21 @@ export function trierPar(liste: film[], cle: keyof(film)): film[] {
 // --- 5. Un paramètre optionnel jamais vérifié -------------------------
 // Appelée sans genre, cette fonction filtre sur `undefined`.
 
-export function filtrerParGenre(liste: film[], genre: genre[]): undefined | film[] {
-  return liste.filter((film) => film.genres.includes(genre));
+export function filtrerParGenre(liste: film[], genre: genre): film[] {
+  if (genre !== undefined)
+    return liste.filter((film) => film.genres.includes(genre));
+  return liste
 }
 
 // --- 6. Un statut libre ------------------------------------------------
 // `statut` est une chaîne quelconque : rien n'empêche d'écrire "Vu",
 // "vue" ou "à voir". Une faute de frappe passe inaperçue.
 
-export function estVu(film: film) {
+export function estVu(film: film): boolean {
   return film.statut === "vu";
 }
 
-export function libelleStatut(film: film) {
+export function libelleStatut(film: film): statut2{
   if (film.statut === "vu") return "Déjà vu";
   if (film.statut === "a_voir") return "À voir";
   if (film.statut === "abandonne") return "Abandonné";
