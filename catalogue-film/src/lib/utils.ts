@@ -16,7 +16,7 @@ interface FILMS {
   id: number;
   titre: string;
   annee: number;
-  genre: string[];
+  genres: string[];
   note: number;
   statut: "Vu"|"a_voir"|"abandonne"
 }
@@ -36,7 +36,7 @@ export function formaterTitre(titre: string, annee: number) {
   return `${titre} (${annee})`;
 }
 
-export function resume(film: film) {
+export function resume(film: FILMS) {
   return `${film.titre} — ${film.annee} — ${film.note}/10 — ${film.genres.join(", ")}`;
 }
 
