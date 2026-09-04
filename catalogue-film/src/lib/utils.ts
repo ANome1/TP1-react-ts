@@ -103,7 +103,7 @@ export function libelleStatut(film: film): statut2{
 
 export function chargerFavoris(): film[] | null {
   const brut = localStorage.getItem("favoris");
-  return JSON.parse(brut as string) as film[] | null;
+  return JSON.parse(brut as string);
 }
 
 export function enregistrerFavoris(favoris: film[]): void {
