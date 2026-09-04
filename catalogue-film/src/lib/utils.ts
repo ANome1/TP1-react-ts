@@ -101,12 +101,12 @@ export function libelleStatut(film: film): statut2{
 // --- 7. Une valeur venue de l'extérieur --------------------------------
 // localStorage.getItem renvoie null quand la clé n'existe pas.
 
-export function chargerFavoris() {
+export function chargerFavoris(): film[] | null {
   const brut = localStorage.getItem("favoris");
-  return JSON.parse(brut);
+  return JSON.parse(brut as string) as film[] | null;
 }
 
-export function enregistrerFavoris(favoris) {
+export function enregistrerFavoris(favoris: film[]): void {
   localStorage.setItem("favoris", JSON.stringify(favoris));
 }
 
@@ -114,7 +114,7 @@ export function enregistrerFavoris(favoris) {
 // On veut pouvoir modifier un ou plusieurs champs d'un film, sans avoir
 // à tous les repasser. Quel type décrit « quelques champs de Film » ?
 
-export function mettreAJour(film, modifications) {
+export function mettreAJour(film: film, modifications: Partial<film>): film {
   return { ...film, ...modifications };
 }
 
@@ -124,7 +124,7 @@ export function mettreAJour(film, modifications) {
 
 let prochainId = 100;
 
-export function creer(nouveauFilm) {
+export function creer(nouveauFilm: Omit<film, 'id'>) {
   return { id: prochainId++, ...nouveauFilm };
 }
 
@@ -132,7 +132,7 @@ export function creer(nouveauFilm) {
 // Cette fonction modifie l'objet reçu au lieu d'en renvoyer un nouveau.
 // Le typage ne l'interdira pas — mais `readonly` peut aider.
 
-export function ajouterNote(film, nouvelleNote) {
+export function ajouterNote(film: film, nouvelleNote: number) {
   film.note = (film.note + nouvelleNote) / 2;
   return film;
 }
